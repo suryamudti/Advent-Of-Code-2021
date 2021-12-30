@@ -15,12 +15,13 @@ class Day1 : Solution() {
         val measurements: List<Int> = input.splitMultiLine().map {
             it.toInt()
         }
-        return countIncreases(measurements)
+        val windows: List<Int> = measurements.windowed(3).map { it.sum() }
+        return countIncreases(windows)
     }
 
     private fun countIncreases(values: List<Int>): Int {
         var counter = 0
-        var prevValue: Int = 0
+        var prevValue: Int = Int.MAX_VALUE
         values.forEach {
             if (it > prevValue) counter++
             prevValue = it
