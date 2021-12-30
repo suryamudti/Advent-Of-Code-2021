@@ -2,6 +2,11 @@ package smile.surya.aoc2021.solution
 
 import smile.surya.aoc2021.template.Solution
 
+/**
+ *  Sonar Sweep
+ *  https://adventofcode.com/2021/day/1
+ * */
+
 class Day1 : Solution() {
 
     override fun solvePart1(input: String): Any {
