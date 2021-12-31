@@ -4,7 +4,7 @@ import smile.surya.aoc2021.template.Solution
 import smile.surya.aoc2021.util.splitMultiLine
 
 /**
- * Dive !
+ * Dive!
  * https://adventofcode.com/2021/day/2
  * */
 
