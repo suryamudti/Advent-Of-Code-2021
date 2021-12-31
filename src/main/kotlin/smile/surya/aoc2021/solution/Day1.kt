@@ -1,6 +1,7 @@
 package smile.surya.aoc2021.solution
 
 import smile.surya.aoc2021.template.Solution
+import smile.surya.aoc2021.util.splitMultiLine
 
 /**
  *  Sonar Sweep
@@ -34,9 +35,7 @@ class Day1 : Solution() {
         return counter
     }
 
-    private fun String.splitMultiLine(): List<String> {
-        return split("\n")
-    }
+
 
 }
 
