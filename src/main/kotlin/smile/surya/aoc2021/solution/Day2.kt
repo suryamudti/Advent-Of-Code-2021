@@ -14,20 +14,34 @@ class Day2 : Solution() {
         val lines = input.splitMultiLine()
         var horizontalPosition = 0
         var depth = 0
-        lines.forEach {
-            val value = getValue(it)
-            if (it.startsWith("forward"))
+        lines.forEach { command ->
+            val value = getValue(command)
+            if (command.startsWith("forward"))
                 horizontalPosition += value
-            else if (it.startsWith("up"))
+            else if (command.startsWith("up"))
                 depth -= value
-            else if (it.startsWith("down"))
+            else if (command.startsWith("down"))
                 depth += value
         }
         return horizontalPosition * depth
     }
 
     override fun solvePart2(input: String): Any {
-        return ""
+        val lines = input.splitMultiLine()
+        var horizontalPosition = 0
+        var depth = 0
+        var aim = 0
+        lines.forEach { command ->
+            val value = getValue(command)
+            if (command.startsWith("forward")) {
+                horizontalPosition = value
+                depth += (aim * value)
+            } else if (command.startsWith("up"))
+                aim -= value
+            else if (command.startsWith("down"))
+                aim += value
+        }
+        return horizontalPosition * depth
     }
 
     private fun getValue(command: String) = command.split(" ")[1].toInt()
