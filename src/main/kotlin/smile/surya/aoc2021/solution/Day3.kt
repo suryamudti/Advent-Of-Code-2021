@@ -25,15 +25,15 @@ class Day3 : Solution() {
     }
 
     override fun solvePart2(input: String): Any {
-        return  ""
+        return ""
     }
-
 
     private fun String.toBitString() =
         splitMultiLine()
-            .map { row -> row.split("")
-                .filter { it.isNotBlank() }
-                .map { it.toInt() }
+            .map { row ->
+                row.split("")
+                    .filter { it.isNotBlank() }
+                    .map { it.toInt() }
             }
 
     private fun findMostCommonBit(rows: List<List<Int>>, column: Int, equallyCommonDefault: Int = 1): Int {
