@@ -3,7 +3,7 @@ package smile.surya.aoc2021.solution
 import smile.surya.aoc2021.template.Solution
 import smile.surya.aoc2021.util.binaryToDecimal
 import smile.surya.aoc2021.util.bitFlip
-import smile.surya.aoc2021.util.splitMultiLine
+import smile.surya.aoc2021.util.toBitString
 
 /**
  * Binary Diagnostic
@@ -27,14 +27,6 @@ class Day3 : Solution() {
     override fun solvePart2(input: String): Any {
         return ""
     }
-
-    private fun String.toBitString() =
-        splitMultiLine()
-            .map { row ->
-                row.split("")
-                    .filter { it.isNotBlank() }
-                    .map { it.toInt() }
-            }
 
     private fun findMostCommonBit(rows: List<List<Int>>, column: Int, equallyCommonDefault: Int = 1): Int {
         val meanBit: Double = rows.sumOf { it[column] } / rows.count().toDouble()

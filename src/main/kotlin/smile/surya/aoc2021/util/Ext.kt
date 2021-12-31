@@ -13,3 +13,11 @@ fun Int.bitFlip(): Int {
     }
     return this.xor(1)
 }
+
+fun String.toBitString() =
+    splitMultiLine()
+        .map { row ->
+            row.split("")
+                .filter { it.isNotBlank() }
+                .map { it.toInt() }
+        }
