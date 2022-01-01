@@ -21,3 +21,13 @@ fun String.toBitString() =
                 .filter { it.isNotBlank() }
                 .map { it.toInt() }
         }
+
+fun <T> List<List<T>>.transpose(): List<List<T>> {
+    val result: MutableList<MutableList<T>> =
+        (this.first().indices)
+            .map { mutableListOf<T>() }
+            .toMutableList()
+
+    forEach { result.zip(it).forEach { (rows, cell) -> rows.add(cell) } }
+    return result
+}
