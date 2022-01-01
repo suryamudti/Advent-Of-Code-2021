@@ -11,6 +11,8 @@ class Day4 : Solution() {
 
         while (numberDrawer.hasNext()) {
             val drawnNumber = numberDrawer.next()
+
+            val winnerGrouping: Map<Boolean, List<BingoBoard>> = boards.groupBy { it.markNumber(drawnNumber) }
         }
 
         return lines
@@ -34,6 +36,21 @@ class Day4 : Solution() {
         private val board: List<List<Cell>> = grid.map { it.map { Cell(it) } }
         private val transposeBoard: List<List<Cell>> = board.transpose()
         private val numbersMap: Map<Int, Cell> = board.flatten().associateBy { it.value }
+
+        operator fun contains(value: Int): Boolean = numbersMap.containsKey(value)
+
+        fun markNumber(number: Int): Boolean {
+            if (number !in this) {
+                return false
+            }
+            numbersMap[number]!!.mark()
+            return checkIfWon()
+        }
+
+        private fun checkIfWon(): Boolean {
+            return (board.asSequence().map { row -> row.all { it.isMarked } }.any { it }
+                    || transposeBoard.asSequence().map { column -> column.all { it.isMarked } }.any { it })
+        }
 
         private data class Cell(
             val value: Int,
